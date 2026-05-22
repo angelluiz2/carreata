@@ -1,0 +1,568 @@
+:root {
+      --verde: #2E8B3A;
+      --verde-claro: #4CAF50;
+      --verde-escuro: #1B5E20;
+      --preto: #0D0D0D;
+      --branco: #F5F5F0;
+      --cinza: #1A1A1A;
+      --cinza2: #252525;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--preto);
+      color: var(--branco);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .bg-lines {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .bg-lines::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 60px,
+        rgba(46, 139, 58, 0.04) 60px,
+        rgba(46, 139, 58, 0.04) 62px
+      );
+      animation: moveLines 20s linear infinite;
+    }
+    @keyframes moveLines {
+      from { transform: translateX(0); }
+      to { transform: translateX(120px); }
+    }
+
+    .screen { display: none; position: relative; z-index: 1; min-height: 100vh; }
+    .screen.active { display: flex; }
+
+    /* ===== LOGIN ===== */
+    #login-screen {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .badge {
+      background: var(--verde);
+      color: var(--branco);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      padding: 4px 14px;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+      animation: fadeDown 0.5s ease both;
+    }
+
+      25% { transform: translateX(5px); }
+      75% { transform: translateX(-3px); }
+    }
+
+
+    .logo-sub {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(245,245,240,0.35);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      animation: fadeDown 0.6s ease 0.2s both;
+    }
+
+    .logo-img {
+      width: 260px;
+      margin-bottom: 1.5rem;
+      animation: fadeDown 0.6s ease 0.1s both;
+    }
+
+    .login-card {
+      background: var(--cinza);
+      border: 1px solid rgba(76,175,80,0.2);
+      border-radius: 16px;
+      padding: 2.2rem 2.5rem;
+      width: 100%;
+      max-width: 400px;
+      animation: fadeUp 0.7s ease 0.3s both;
+      position: relative;
+      overflow: hidden;
+    }
+    .login-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--verde-claro), var(--verde-escuro));
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--branco);
+      margin-bottom: 0.3rem;
+    }
+    .card-sub {
+      font-size: 0.78rem;
+      color: rgba(245,245,240,0.35);
+      margin-bottom: 1.75rem;
+    }
+
+    .field-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--verde-claro);
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    .field-wrap {
+      position: relative;
+      margin-bottom: 1.2rem;
+    }
+    .field-icon {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.95rem;
+      opacity: 0.4;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      background: var(--cinza2);
+      border: 1.5px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      color: var(--branco);
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    input:focus {
+      border-color: var(--verde-claro);
+      box-shadow: 0 0 0 3px rgba(76,175,80,0.12);
+    }
+    input::placeholder { color: rgba(245,245,240,0.2); }
+
+    .btn-login {
+      width: 100%;
+      padding: 0.95rem;
+      background: linear-gradient(135deg, var(--verde-claro), var(--verde-escuro));
+      color: var(--branco);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: 3px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      margin-top: 0.4rem;
+    }
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(46,139,58,0.45);
+    }
+    .btn-login:active { transform: translateY(0); }
+
+    .login-footer {
+      text-align: center;
+      margin-top: 1.25rem;
+      font-size: 0.75rem;
+      color: rgba(245,245,240,0.25);
+    }
+
+    /* ===== TELA PRINCIPAL ===== */
+    #main-screen { flex-direction: column; }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+      padding: 1.1rem 2rem;
+      border-bottom: 1px solid rgba(76,175,80,0.12);
+      animation: fadeDown 0.5s ease both;
+    }
+
+
+    .topbar-logo {
+      height: 32px;
+      mix-blend-mode: screen;
+    }
+
+    .user-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--cinza);
+      border: 1px solid rgba(76,175,80,0.18);
+      padding: 0.35rem 0.9rem 0.35rem 0.35rem;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .avatar {
+      width: 28px; height: 28px;
+      background: linear-gradient(135deg, var(--verde-claro), var(--verde-escuro));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      color: var(--branco);
+      font-weight: 900;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      animation: fadeUp 0.6s ease 0.1s both;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(76,175,80,0.1);
+      border: 1px solid rgba(76,175,80,0.3);
+      color: var(--verde-claro);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 50px;
+      margin-bottom: 1.75rem;
+    }
+    .dot-green {
+      width: 7px; height: 7px;
+      background: var(--verde-claro);
+      border-radius: 50%;
+      animation: blink 1.2s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+
+    .event-info {
+      background: var(--cinza);
+      border: 1px solid rgba(76,175,80,0.14);
+      border-radius: 14px;
+      padding: 1.75rem 2.25rem;
+      max-width: 460px;
+      width: 100%;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .event-info::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--verde-claro), var(--verde-escuro));
+    }
+
+    .event-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--verde-claro);
+      margin-bottom: 0.6rem;
+      opacity: 0.8;
+    }
+
+    .event-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      line-height: 1.1;
+      color: var(--branco);
+      margin-bottom: 1.25rem;
+    }
+
+    .event-meta {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: rgba(245,245,240,0.5);
+    }
+
+    /* ===== BOTÃO GPS ===== */
+    .gps-btn-wrap { position: relative; }
+
+    .pulse-ring {
+      position: absolute;
+      inset: -12px;
+      border-radius: 50px;
+      border: 2px solid var(--verde-claro);
+      opacity: 0;
+      animation: pulse 2.5s ease-out infinite;
+    }
+    .pulse-ring:nth-child(2) { animation-delay: 0.8s; }
+    .pulse-ring:nth-child(3) { animation-delay: 1.6s; }
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.5; }
+      100% { transform: scale(1.15); opacity: 0; }
+    }
+
+    .btn-gps {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      padding: 1.2rem 2.8rem;
+      background: linear-gradient(135deg, var(--verde-claro), var(--verde-escuro));
+      color: var(--branco);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.45rem;
+      letter-spacing: 3px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      min-width: 260px;
+    }
+    .btn-gps:hover {
+      transform: scale(1.04);
+      box-shadow: 0 10px 30px rgba(46,139,58,0.5);
+    }
+    .btn-gps:active { transform: scale(0.98); }
+
+    .btn-gps-icon {
+      font-size: 1.5rem;
+      animation: bounce 1.5s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    .btn-hint {
+      margin-top: 0.9rem;
+      font-size: 0.72rem;
+      color: rgba(245,245,240,0.2);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-logout {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(245,245,240,0.3);
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-logout:hover { color: var(--branco); border-color: rgba(255,255,255,0.25); }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .error-msg {
+      color: #FF5252;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 0.7rem;
+      display: none;
+    }
+    .error-msg.show { display: block; }
+
+    /* ========== RESPONSIVIDADE ========== */
+
+    /* Tablet (até 768px) */
+    @media (max-width: 768px) {
+      .login-card {
+        padding: 2rem 1.75rem;
+        max-width: 100%;
+      }
+      .logo-img {
+        width: 200px;
+      }
+      .topbar {
+        padding: 1rem 1.25rem;
+      }
+      .topbar-logo {
+        height: 30px;
+      }
+      .main-content {
+        padding: 2rem 1.25rem;
+      }
+      .event-info {
+        padding: 1.5rem 1.5rem;
+      }
+      .event-name {
+        font-size: 1.75rem;
+      }
+      .btn-gps {
+        min-width: 220px;
+        font-size: 1.3rem;
+        padding: 1.1rem 2rem;
+      }
+      .btn-logout {
+        position: static;
+        display: block;
+        margin: 0 auto 1.5rem;
+      }
+      #main-screen {
+        padding-bottom: 1rem;
+      }
+    }
+
+    /* Celular (até 480px) */
+    @media (max-width: 480px) {
+      .logo-img {
+        width: 170px;
+        margin-bottom: 1.2rem;
+      }
+      .badge {
+        font-size: 0.68rem;
+        letter-spacing: 2px;
+      }
+      .login-card {
+        padding: 1.75rem 1.25rem;
+        border-radius: 12px;
+      }
+      .card-title {
+        font-size: 0.95rem;
+      }
+      input[type="text"],
+      input[type="password"] {
+        font-size: 0.88rem;
+        padding: 0.75rem 0.9rem;
+      }
+      .btn-login {
+        font-size: 1.1rem;
+        padding: 0.85rem;
+      }
+      .topbar {
+        padding: 0.9rem 1rem;
+      }
+      .topbar-logo {
+        height: 26px;
+      }
+      .user-pill {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.75rem 0.3rem 0.3rem;
+      }
+      .avatar {
+        width: 24px;
+        height: 24px;
+        font-size: 0.75rem;
+      }
+      .event-info {
+        padding: 1.25rem 1.1rem;
+        border-radius: 12px;
+      }
+      .event-name {
+        font-size: 1.5rem;
+      }
+      .event-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .btn-gps {
+        min-width: 190px;
+        font-size: 1.2rem;
+        padding: 1rem 1.75rem;
+      }
+      .status-badge {
+        font-size: 0.65rem;
+      }
+      #footer-screen {
+        padding: 2rem 1.25rem;
+      }
+    }
+/* ========== TELA DO ALUNO ========== */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.info-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--verde-claro);
+  white-space: nowrap;
+}
+
+.info-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--branco);
+  text-align: right;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(76,175,80,0.1);
+}
+
+@media (max-width: 480px) {
+  .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+  .info-value {
+    text-align: left;
+    font-size: 0.9rem;
+  }
+}
+
+#aluno-screen { display: none; flex-direction: column; min-height: 100vh; }
+#aluno-screen.active { display: flex; }
