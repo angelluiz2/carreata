@@ -5,31 +5,31 @@ const ALUNOS = {
     ra: '2024001',
     matricula: '202400001',
     curso: 'Sistemas de Informação',
-    turma: 'SI-2024/1'
+    turma: 'SI-2026/1'
   },
   'admin': {
     senha: 'carreata123',
-    nome: 'Administrador',
+    nome: 'admin',
     ra: '0000000',
     matricula: '000000000',
     curso: 'Administração',
-    turma: 'ADM-2024/1'
+    turma: 'ADM-2026/1'
   },
   'piloto': {
     senha: '1234',
-    nome: 'Piloto Teste',
+    nome: 'Piloto FASIPE',
     ra: '2024002',
     matricula: '202400002',
     curso: 'Engenharia Civil',
-    turma: 'EC-2024/1'
+    turma: 'EC-2026/1'
   },
   'org': {
-    senha: 'fasipe2025',
+    senha: 'fasipe2026',
     nome: 'Organização FASIPE',
     ra: '2024003',
     matricula: '202400003',
     curso: 'Direito',
-    turma: 'DIR-2024/1'
+    turma: 'DIR-2026/1'
   }
 };
 
