@@ -22,22 +22,17 @@
   
 
   <div class="login-card">
-    <div class="card-title">Entrar no sistema</div>
-    <p class="card-sub">Acesso exclusivo para participantes da carreata</p>
+    <div class="card-title">Check-in da Carreata</div>
+    <p class="card-sub">Digite seu RA para realizar o check-in</p>
 
     <div class="field-wrap">
-      <label class="field-label" for="usuario">Usuário</label>
-      <input type="text" id="usuario" placeholder="Digite seu usuário" />
+      <label class="field-label" for="ra-input">RA</label>
+      <input type="text" id="ra-input" placeholder="Digite seu RA" />
     </div>
 
-    <div class="field-wrap">
-      <label class="field-label" for="senha">Senha</label>
-      <input type="password" id="senha" placeholder="Digite sua senha" />
-    </div>
+    <p class="error-msg" id="error-msg">RA não encontrado!</p>
 
-    <p class="error-msg" id="error-msg"> Usuário ou senha incorretos!</p>
-
-    <button class="btn-login" onclick="fazerLogin()">ENTRAR NA CARREATA</button>
+    <button class="btn-login" onclick="fazerLogin()">FAZER CHECK-IN</button>
     <p class="login-footer">Problemas de acesso? Fale com a organização.</p>
   </div>
 </div>
