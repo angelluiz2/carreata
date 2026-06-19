@@ -33,8 +33,8 @@
         -45deg,
         transparent,
         transparent 60px,
-        rgba(46, 139, 58, 0.04) 60px,
-        rgba(46, 139, 58, 0.04) 62px
+        rgba(46, 139, 58, 0.06) 60px,
+        rgba(46, 139, 58, 0.06) 62px
       );
       animation: moveLines 20s linear infinite;
     }
@@ -66,16 +66,15 @@
       animation: fadeDown 0.5s ease both;
     }
 
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
       25% { transform: translateX(5px); }
       75% { transform: translateX(-3px); }
     }
 
+
     .logo-sub {
       font-size: 0.82rem;
       font-weight: 600;
-      color: rgba(245,245,240,0.35);
+      color: rgba(245,245,240,0.3);
       letter-spacing: 2px;
       text-transform: uppercase;
       text-align: center;
@@ -84,14 +83,14 @@
     }
 
     .logo-img {
-      width: 260px;
-      margin-bottom: 1.5rem;
+      width: 170px;
+      margin-bottom: 1.2rem;
       animation: fadeDown 0.6s ease 0.1s both;
     }
 
     .login-card {
       background: var(--cinza);
-      border: 1px solid rgba(76,175,80,0.2);
+      border: 1px solid rgba(46,139,58,0.2);
       border-radius: 16px;
       padding: 2.2rem 2.5rem;
       width: 100%;
@@ -116,7 +115,7 @@
     }
     .card-sub {
       font-size: 0.78rem;
-      color: rgba(245,245,240,0.35);
+      color: rgba(245,245,240,0.3);
       margin-bottom: 1.75rem;
     }
 
@@ -144,8 +143,7 @@
     }
 
     input[type="text"],
-    input[type="tel"],
-    select {
+    input[type="password"] {
       width: 100%;
       background: var(--cinza2);
       border: 1.5px solid rgba(255,255,255,0.07);
@@ -158,27 +156,11 @@
       transition: border-color 0.2s, box-shadow 0.2s;
       outline: none;
     }
-    input:focus,
-    select:focus {
+    input:focus {
       border-color: var(--verde-claro);
       box-shadow: 0 0 0 3px rgba(76,175,80,0.12);
     }
-    input::placeholder { color: rgba(245,245,240,0.2); }
-    select {
-      appearance: none;
-      background-image:
-        linear-gradient(45deg, transparent 50%, var(--verde-claro) 50%),
-        linear-gradient(135deg, var(--verde-claro) 50%, transparent 50%);
-      background-position:
-        calc(100% - 18px) calc(50% - 2px),
-        calc(100% - 13px) calc(50% - 2px);
-      background-size: 5px 5px, 5px 5px;
-      background-repeat: no-repeat;
-    }
-    select option {
-      background: var(--cinza2);
-      color: var(--branco);
-    }
+    input::placeholder { color: rgba(245,245,240,0.25); }
 
     .btn-login {
       width: 100%;
@@ -214,6 +196,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1rem;
       position: relative;
       z-index: 2;
       padding: 1.1rem 2rem;
@@ -223,8 +206,10 @@
 
 
     .topbar-logo {
-      height: 32px;
+      height: 34px;
       mix-blend-mode: screen;
+      display: block;
+      object-fit: contain;
     }
 
     .user-pill {
@@ -232,7 +217,7 @@
       align-items: center;
       gap: 0.5rem;
       background: var(--cinza);
-      border: 1px solid rgba(76,175,80,0.18);
+      border: 1px solid rgba(46,139,58,0.2);
       padding: 0.35rem 0.9rem 0.35rem 0.35rem;
       border-radius: 50px;
       font-size: 0.82rem;
@@ -287,7 +272,7 @@
 
     .event-info {
       background: var(--cinza);
-      border: 1px solid rgba(76,175,80,0.14);
+      border: 1px solid rgba(46,139,58,0.15);
       border-radius: 14px;
       padding: 1.75rem 2.25rem;
       max-width: 460px;
@@ -372,7 +357,7 @@
       border-radius: 50px;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
-      min-width: 260px;
+      min-width: 200px;
     }
     .btn-gps:hover {
       transform: scale(1.04);
@@ -392,7 +377,7 @@
     .btn-hint {
       margin-top: 0.9rem;
       font-size: 0.72rem;
-      color: rgba(245,245,240,0.2);
+      color: rgba(245,245,240,0.25);
       font-weight: 600;
       letter-spacing: 0.5px;
     }
@@ -584,3 +569,113 @@
 
 #aluno-screen { display: none; flex-direction: column; min-height: 100vh; }
 #aluno-screen.active { display: flex; }
+
+
+
+/* Login card scroll para caber tudo */
+.login-card {
+  max-height: 90vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--verde) transparent;
+}
+
+/* ========== SELECT CURSO ========== */
+.select-curso {
+  width: 100%;
+  background: var(--cinza2);
+  border: 1.5px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  color: var(--branco);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234CAF50' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.select-curso:focus {
+  border-color: var(--verde-claro);
+  box-shadow: 0 0 0 3px rgba(76,175,80,0.12);
+}
+.select-curso option {
+  background: var(--cinza);
+  color: var(--branco);
+}
+
+/* ========== INPUT TEL ========== */
+input[type="tel"] {
+  width: 100%;
+  background: var(--cinza2);
+  border: 1.5px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  color: var(--branco);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+input[type="tel"]:focus {
+  border-color: var(--verde-claro);
+  box-shadow: 0 0 0 3px rgba(76,175,80,0.12);
+}
+input[type="tel"]::placeholder { color: rgba(245,245,240,0.25); }
+
+/* ========== LOGO MENOR ========== */
+.logo-img {
+  width: 200px !important;
+}
+
+/* ========== SELECT & TEL ========== */
+select,
+input[type="tel"] {
+  width: 100%;
+  background: var(--cinza2);
+  border: 1.5px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  color: var(--branco);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234CAF50' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+select option {
+  background: #1A1A1A;
+  color: var(--branco);
+  font-weight: 600;
+}
+
+select option:first-child {
+  color: rgba(245,245,240,0.3);
+}
+
+select:focus,
+input[type="tel"]:focus {
+  border-color: var(--verde-claro);
+  box-shadow: 0 0 0 3px rgba(76,175,80,0.12);
+}
+
+input[type="tel"]::placeholder {
+  color: rgba(245,245,240,0.25);
+}

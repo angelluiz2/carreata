@@ -73,7 +73,7 @@
 <!-- TELA PRINCIPAL -->
 <div class="screen" id="main-screen">
   <div class="topbar">
-    <img src="" class="fasipe-logo" class="topbar-logo" alt="FASIPE" />
+    <img src="" class="fasipe-logo topbar-logo" alt="FASIPE" />
     <div class="user-pill">
       <div class="avatar" id="avatar-letter">U</div>
       <span id="nome-usuario">Usuário</span>
@@ -112,7 +112,7 @@
   </div>
   <!-- RODAPE LOGIN -->
   <div style="position:relative; z-index:1; border-top:1px solid rgba(76,175,80,0.12); padding:2rem; text-align:center; width:100%; margin-top:2rem;">
-    <img src="" class="fasipe-logo" alt="FASIPE" style="height:70px; mix-blend-mode:screen; margin-bottom:1.5rem;" />
+    <img src="" class="fasipe-logo" alt="FASIPE" style="height:50px; mix-blend-mode:screen; margin-bottom:1.5rem;" />
     <p style="font-size:0.65rem; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:rgba(245,245,240,0.3); margin-bottom:0.5rem;">Patrocinadores</p>
     <p style="font-size:0.62rem; color:rgba(245,245,240,0.18); font-weight:600; margin-top:1.5rem;">Desenvolvido por Angel Luiz, Silas e Gabriel R.</p>
   </div>
@@ -123,7 +123,7 @@
 <div class="screen" id="aluno-screen">
 
   <div class="topbar">
-    <img src="" class="fasipe-logo" class="topbar-logo" alt="FASIPE" />
+    <img src="" class="fasipe-logo topbar-logo" alt="FASIPE" />
     <div class="user-pill">
       <div class="avatar" id="avatar-letter2">A</div>
       <span id="nome-usuario2">Aluno</span>
@@ -202,7 +202,7 @@
 
   <!-- RODAPE -->
   <div style="border-top:1px solid rgba(76,175,80,0.12); padding:2rem; text-align:center;">
-    <img src="" class="fasipe-logo" alt="FASIPE" style="height:70px; mix-blend-mode:screen; margin-bottom:1.5rem;" />
+    <img src="" class="fasipe-logo" alt="FASIPE" style="height:50px; mix-blend-mode:screen; margin-bottom:1.5rem;" />
     <p style="font-size:0.65rem; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:rgba(245,245,240,0.3); margin-bottom:0.5rem;">Patrocinadores</p>
     <p style="font-size:0.62rem; color:rgba(245,245,240,0.18); font-weight:600; margin-top:1.5rem;">Desenvolvido por Angel Luiz, Silas e Gabriel R.</p>
   </div>
@@ -215,6 +215,98 @@
 
 
 <script src="script.js"></script>
+
+<!-- TELA DO ALUNO -->
+<div class="screen" id="aluno-screen">
+  <div class="topbar">
+    <img src="" class="fasipe-logo topbar-logo" alt="FASIPE" />
+    <div class="user-pill">
+      <div class="avatar" id="avatar-letter2">A</div>
+      <span id="nome-usuario2">Aluno</span>
+    </div>
+  </div>
+
+  <div class="main-content">
+
+    <!-- Card do aluno -->
+    <div class="event-info" style="margin-bottom:2rem;">
+      <div class="event-label">Dados do Aluno</div>
+      <div style="display:flex; flex-direction:column; gap:0.9rem; text-align:left; margin-top:0.5rem;">
+
+        <div class="info-row">
+          <span class="info-label">Nome Completo</span>
+          <span class="info-value" id="info-nome">—</span>
+        </div>
+        <div class="divider"></div>
+
+        <div class="info-row">
+          <span class="info-label">RA</span>
+          <span class="info-value" id="info-ra">—</span>
+        </div>
+        <div class="divider"></div>
+
+        <div class="info-row">
+          <span class="info-label">Matrícula</span>
+          <span class="info-value" id="info-matricula">—</span>
+        </div>
+        <div class="divider"></div>
+
+        <div class="info-row">
+          <span class="info-label">Curso</span>
+          <span class="info-value" id="info-curso">—</span>
+        </div>
+        <div class="divider"></div>
+
+        <div class="info-row">
+          <span class="info-label">Turma</span>
+          <span class="info-value" id="info-turma">—</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Botão GPS -->
+    <div class="event-info" style="margin-bottom:2rem; display:none;" id="event-card-aluno">
+      <div class="event-label">Evento Ativo</div>
+      <div class="event-name" style="font-size:1.5rem;">Carreata da<br/>FASIPE 2026</div>
+      <div class="event-meta" style="margin-top:1rem;">
+        <div class="meta-item"><span></span> Ponto de saida: Portaria Principal</div>
+        <div class="meta-item"><span></span> Horario: 09:00h</div>
+        <div class="meta-item"><span></span> Participantes: 48</div>
+      </div>
+    </div>
+
+        <div class="gps-btn-wrap">
+      <div class="pulse-ring"></div>
+      <div class="pulse-ring"></div>
+      <div class="pulse-ring"></div>
+      <button class="btn-gps" id="btn-gps2" onclick="iniciarGPS2()">
+        <span class="btn-gps-icon"></span>
+        INICIAR ROTA
+      </button>
+    </div>
+    <p class="btn-hint">Toque para ativar a navegacao GPS</p>
+
+    <!-- CRONOMETRO -->
+    <div id="timer-box" style="display:none; margin-top:2rem; text-align:center;">
+      <p style="font-size:0.7rem; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:rgba(245,245,240,0.4); margin-bottom:0.5rem;">Tempo restante para confirmar presença</p>
+      <div id="timer-display" style="font-family:'Bebas Neue',sans-serif; font-size:4rem; letter-spacing:4px; color:var(--verde-claro); line-height:1;">02:00:00</div>
+      <p style="font-size:0.72rem; color:rgba(245,245,240,0.3); margin-top:0.4rem;">Permaneça na carreata para garantir sua nota</p>
+    </div>
+
+    <!-- CONCLUSAO -->
+    <div id="conclusao-box" style="display:none; margin-top:2rem; text-align:center; animation: fadeUp 0.6s ease both;">
+      <div style="background:rgba(0,200,83,0.1); border:1px solid rgba(0,200,83,0.3); border-radius:14px; padding:1.5rem 2rem;">
+        <div style="font-size:2.5rem; margin-bottom:0.5rem;">&#10003;</div>
+        <p style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:2px; color:#00C853; margin-bottom:0.4rem;">Participação Confirmada!</p>
+        <p style="font-size:0.82rem; color:rgba(245,245,240,0.6); font-weight:600;">Você completou as 2h da carreata.<br/>Sua presença foi registrada com sucesso.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="btn-logout" onclick="sair()">Sair</button>
+</div>
 
 </body>
 </html>
